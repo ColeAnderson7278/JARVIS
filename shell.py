@@ -15,7 +15,14 @@ def cli_main():
 
 @app.route("/")
 def web_main():
-    return render_template('root.html', context={'weather': weather.temp_f})
+    return render_template(
+        'root.html',
+        context={
+            'description': weather.description,
+            'temp': weather.temp_f,
+            'wind': weather.wind,
+            'image_URL': weather.get_image_URL()
+        })
 
 
 if __name__ == '__main__':
