@@ -1,20 +1,22 @@
-import weather
+import weather as w
 import json
+from flask import Flask, render_template
 
 secrets = json.load(open("secrets.json"))
 
+app = Flask(__name__)
 
-def show_message():
-    print(f"Hello {secrets['UserInfo']['name']}\n")
-    print(
-        f"Weather:\n{weather.get_description()}\nTemp: {weather.get_temperature()}°F | Wind: {weather.get_wind_speed()} mph"
-    )
+weather = w.WeatherAPI().get
 
 
-def main():
-    show_message()
-    # print(weather.info())
+def cli_main():
+    print(show_message())
+
+
+@app.route("/")
+def web_main():
+    return render_template('root.html', context={'weather': weather.temp_f})
 
 
 if __name__ == '__main__':
-    main()
+    app.run()

@@ -4,26 +4,40 @@ import math
 
 secrets = json.load(open("secrets.json"))
 
-r = requests.get(
-    f"http://api.openweathermap.org/data/2.5/weather?zip={secrets['WeatherInfo']['ZIP_Code']},us&APPID={secrets['WeatherInfo']['WeatherAPI_Key']}"
-)
+
+class WeatherAPI:
+    DEFAULT_ZIP = secrets['WeatherInfo']['ZIP_Code']
+    URL_FORMAT = "http://api.openweathermap.org/data/2.5/weather?zip={zipcode},us&APPID=" + secrets[
+        'WeatherInfo']['WeatherAPI_Key']
+
+    def __init__(self, zipcode=None):
+        self.zipcode = zipcode or self.DEFAULT_ZIP
+
+    @property
+    def url(self):
+        return self.URL_FORMAT.format(zipcode=self.zipcode)
+
+    @property
+    def get(self):
+        response = requests.get(self.url)
+        data = response.json()
+        return Weather(
+            description=data['weather'][0]['description'].title(),
+            wind=data['wind']['speed'],
+            temp=data['main']['temp'],
+        )
 
 
-def get_temperature():
-    return math.floor((int(r.json()["main"]["temp"]) - 273.15) * (9 / 5) + 32)
+class Weather:
+    def __init__(self, *, description, wind, temp):
+        self.description = description
+        self._temp = temp
+        self.wind = wind
+
+    @property
+    def temp_f(self):
+        return kelvin_to_fahrenheit(self._temp)
 
 
-def get_description():
-    words = r.json()["weather"][0]["description"].split(" ")
-    new = ""
-    for word in words:
-        new += f"{word.capitalize()} "
-    return new
-
-
-def get_wind_speed():
-    return r.json()["wind"]["speed"]
-
-
-def info():
-    return r.text
+def kelvin_to_fahrenheit(k):
+    return math.floor((int(k) - 273.15) * (9 / 5) + 32)
