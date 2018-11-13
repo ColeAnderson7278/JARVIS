@@ -23,7 +23,7 @@ class NewsAPI:
         return News(
             articleOne={
                 'headline': data['articles'][0]['title'],
-                'image_URL': data['articles'][0]['urlToImage'],
+                'image_URL': check_for_image(data, 0),
                 'link': data['articles'][0]['url']
             },
             articleTwo={
@@ -43,3 +43,10 @@ class News:
         self.articleOne = articleOne
         self.articleTwo = articleTwo
         self.articleThree = articleThree
+
+
+def check_for_image(data, num):
+    if data['articles'][num]['urlToImage'] == None:
+        return "https://image.flaticon.com/icons/svg/1199/1199586.svg"
+    else:
+        return data['articles'][num]['urlToImage']
