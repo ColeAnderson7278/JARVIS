@@ -7,8 +7,7 @@
         <meta name="viewport" context="width=device-width, initial-scale=1" />
         <style>
             .welcomeMessage {
-                display: flex;
-                justify-content: center;
+                text-align: center;
                 font-family: "Lucida Sans", "Lucida Sans Regular",
                     "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
                     sans-serif;
@@ -16,9 +15,16 @@
                 font-weight: bold;
                 color: white;
                 background-color: rgb(128, 202, 226);
-                margin: 30px;
+                padding: 10px;
+                margin-bottom: 10px;
                 border-radius: 10px;
                 text-shadow: 2px 2px rgb(0, 0, 0);
+            }
+            .statementText {
+                font-size: 20px;
+            }
+            .authorText {
+                font-size: 20px;
             }
             .weatherCard {
                 border-radius: 10px;
@@ -90,23 +96,32 @@
     <body>
         <div class="welcomeMessage">
             <p>Good Morning {{ context.userName }}</p>
+            <div class="quoteContainer">
+                <p class="statementText">{{ context.quote["statement"] }}</p>
+                <p class="authorText">- {{ context.quote["author"] }}</p>
+            </div>
         </div>
         <div class="weatherCard">
             <div class="cardHeader"><h1>Today's Weather</h1></div>
             <div class="cardBody">
                 <div class="mainInfo">
-                    <img class="weatherImage" src="{{context.image_URL}}" />
+                    <img
+                        class="weatherImage"
+                        src="{{context.weather_image_URL}}"
+                    />
                     <div>
                         <h1 class="tempText">{{ context.temp }}°F</h1>
-                        <p class="conditionText">{{ context.description }}</p>
+                        <p class="conditionText">
+                            {{ context.weather["description"] }}
+                        </p>
                     </div>
                 </div>
                 <div class="sideInfo">
                     <p>
                         Hi: {{ context.temp_max }}° Lo: {{ context.temp_min }}°
                     </p>
-                    <p>Wind: {{ context.wind }}mph</p>
-                    <p>Humidity: {{ context.humidity }}%</p>
+                    <p>Wind: {{ context.weather["wind"] }}mph</p>
+                    <p>Humidity: {{ context.weather["humidity"] }}%</p>
                 </div>
             </div>
         </div>
@@ -116,14 +131,14 @@
                 <div class="articleBody">
                     <img
                         class="articleImage"
-                        src="{{context.articleOne['image_URL']}}"
+                        src="{{context.articles[0]['image_URL']}}"
                     />
                     <div class="storyInfo">
-                        <h2>{{ context.articleOne["headline"] }}</h2>
+                        <h2>{{ context.articles[0]["headline"] }}</h2>
                         <a
                             class="articleLink"
                             target="_blank"
-                            href="{{context.articleOne['link']}}"
+                            href="{{context.articles[0]['link']}}"
                             ><h3>>>> Read More Here <<<</h3></a
                         >
                     </div>
@@ -133,14 +148,14 @@
                 <div class="articleBody">
                     <img
                         class="articleImage"
-                        src="{{context.articleTwo['image_URL']}}"
+                        src="{{context.articles[1]['image_URL']}}"
                     />
                     <div class="storyInfo">
-                        <h2>{{ context.articleTwo["headline"] }}</h2>
+                        <h2>{{ context.articles[1]["headline"] }}</h2>
                         <a
                             class="articleLink"
                             target="_blank"
-                            href="{{context.articleTwo['link']}}"
+                            href="{{context.articles[1]['link']}}"
                             ><h3>>>> Read More Here <<<</h3></a
                         >
                     </div>
@@ -150,14 +165,14 @@
                 <div class="articleBody">
                     <img
                         class="articleImage"
-                        src="{{context.articleThree['image_URL']}}"
+                        src="{{context.articles[2]['image_URL']}}"
                     />
                     <div class="storyInfo">
-                        <h2>{{ context.articleThree["headline"] }}</h2>
+                        <h2>{{ context.articles[2]["headline"] }}</h2>
                         <a
                             class="articleLink"
                             target="_blank"
-                            href="{{context.articleThree['link']}}"
+                            href="{{context.articles[2]['link']}}"
                             ><h3>>>> Read More Here <<<</h3></a
                         >
                     </div>
