@@ -21,6 +21,9 @@ def web_main():
             'description': weather.description,
             'temp': weather.temp_f,
             'wind': weather.wind,
+            'humidity': weather.humidity,
+            'temp_min': weather.temp_min,
+            'temp_max': weather.temp_max,
             'image_URL': weather.get_image_URL()
         })
 
