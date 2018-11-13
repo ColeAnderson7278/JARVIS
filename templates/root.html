@@ -6,6 +6,11 @@
         <title>Jarvis</title>
         <meta name="viewport" context="width=device-width, initial-scale=1" />
         <style>
+            @media screen and (min-width: 800px) {
+                .articleContainer {
+                    display: grid;
+                }
+            }
             .welcomeMessage {
                 text-align: center;
                 font-family: "Lucida Sans", "Lucida Sans Regular",
@@ -63,6 +68,10 @@
                 position: relative;
                 left: 15px;
                 bottom: 30px;
+            }
+            .articleContainer {
+                grid-template-columns: 1fr 1fr;
+                margin: 10px;
             }
             .newsCard {
                 border-radius: 10px;
@@ -127,54 +136,73 @@
         </div>
         <div class="newsCard">
             <div class="cardHeader"><h1>Breaking News Stories</h1></div>
-            <div>
-                <div class="articleBody">
-                    <img
-                        class="articleImage"
-                        src="{{context.articles[0]['image_URL']}}"
-                    />
-                    <div class="storyInfo">
-                        <h2>{{ context.articles[0]["headline"] }}</h2>
-                        <a
-                            class="articleLink"
-                            target="_blank"
-                            href="{{context.articles[0]['link']}}"
-                            ><h3>>>> Read More Here <<<</h3></a
-                        >
+            <div class="articleContainer">
+                <div>
+                    <div class="articleBody">
+                        <img
+                            class="articleImage"
+                            src="{{context.articles[0]['image_URL']}}"
+                        />
+                        <div class="storyInfo">
+                            <h2>{{ context.articles[0]["headline"] }}</h2>
+                            <a
+                                class="articleLink"
+                                target="_blank"
+                                href="{{context.articles[0]['link']}}"
+                                ><h3>>>> Read More Here <<<</h3></a
+                            >
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="articleBody">
-                    <img
-                        class="articleImage"
-                        src="{{context.articles[1]['image_URL']}}"
-                    />
-                    <div class="storyInfo">
-                        <h2>{{ context.articles[1]["headline"] }}</h2>
-                        <a
-                            class="articleLink"
-                            target="_blank"
-                            href="{{context.articles[1]['link']}}"
-                            ><h3>>>> Read More Here <<<</h3></a
-                        >
+                <div>
+                    <div class="articleBody">
+                        <img
+                            class="articleImage"
+                            src="{{context.articles[1]['image_URL']}}"
+                        />
+                        <div class="storyInfo">
+                            <h2>{{ context.articles[1]["headline"] }}</h2>
+                            <a
+                                class="articleLink"
+                                target="_blank"
+                                href="{{context.articles[1]['link']}}"
+                                ><h3>>>> Read More Here <<<</h3></a
+                            >
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="articleBody">
-                    <img
-                        class="articleImage"
-                        src="{{context.articles[2]['image_URL']}}"
-                    />
-                    <div class="storyInfo">
-                        <h2>{{ context.articles[2]["headline"] }}</h2>
-                        <a
-                            class="articleLink"
-                            target="_blank"
-                            href="{{context.articles[2]['link']}}"
-                            ><h3>>>> Read More Here <<<</h3></a
-                        >
+                <div>
+                    <div class="articleBody">
+                        <img
+                            class="articleImage"
+                            src="{{context.articles[2]['image_URL']}}"
+                        />
+                        <div class="storyInfo">
+                            <h2>{{ context.articles[2]["headline"] }}</h2>
+                            <a
+                                class="articleLink"
+                                target="_blank"
+                                href="{{context.articles[2]['link']}}"
+                                ><h3>>>> Read More Here <<<</h3></a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="articleBody">
+                        <img
+                            class="articleImage"
+                            src="{{context.articles[3]['image_URL']}}"
+                        />
+                        <div class="storyInfo">
+                            <h2>{{ context.articles[3]["headline"] }}</h2>
+                            <a
+                                class="articleLink"
+                                target="_blank"
+                                href="{{context.articles[3]['link']}}"
+                                ><h3>>>> Read More Here <<<</h3></a
+                            >
+                        </div>
                     </div>
                 </div>
             </div>
