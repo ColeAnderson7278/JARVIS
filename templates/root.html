@@ -10,6 +10,61 @@
                 .articleContainer {
                     display: grid;
                 }
+                .weatherImage {
+                    height: 14rem;
+                }
+                .locationText {
+                    font-size: 40px;
+                    position: relative;
+                    left: 25px;
+                    top: 25px;
+                }
+                .tempText {
+                    font-size: 75px;
+                    position: relative;
+                    left: 25px;
+                    bottom: 25px;
+                }
+                .conditionText {
+                    font-size: 40px;
+                    font-weight: bold;
+                    position: relative;
+                    left: 25px;
+                    bottom: 70px;
+                }
+                .sideInfo {
+                    font-size: 32px;
+                    font-weight: bold;
+                    position: relative;
+                    top: 15px;
+                }
+            }
+            @media screen and (max-width: 800px) {
+                .weatherImage {
+                    height: 8rem;
+                }
+                .locationText {
+                    font-size: 30px;
+                    position: relative;
+                    left: 15px;
+                }
+                .tempText {
+                    font-size: 50px;
+                    position: relative;
+                    left: 15px;
+                    bottom: 35px;
+                }
+                .conditionText {
+                    font-size: 24px;
+                    font-weight: bold;
+                    position: relative;
+                    left: 15px;
+                    bottom: 70px;
+                }
+                .sideInfo {
+                    font-size: 21px;
+                    font-weight: bold;
+                }
             }
             .welcomeMessage {
                 text-align: center;
@@ -19,7 +74,7 @@
                 font-size: 50px;
                 font-weight: bold;
                 color: white;
-                background-color: rgb(128, 202, 226);
+                background-color: rgb(228, 228, 67);
                 padding: 10px;
                 margin-bottom: 10px;
                 border-radius: 10px;
@@ -55,20 +110,6 @@
                 display: flex;
                 justify-content: space-between;
             }
-            .weatherImage {
-                height: 8rem;
-            }
-            .tempText {
-                font-size: 50px;
-                padding-left: 10px;
-            }
-            .conditionText {
-                font-size: 24px;
-                font-weight: bold;
-                position: relative;
-                left: 15px;
-                bottom: 30px;
-            }
             .articleContainer {
                 grid-template-columns: 1fr 1fr;
                 margin: 10px;
@@ -82,10 +123,6 @@
                     "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
                     sans-serif;
                 margin-bottom: 10px;
-            }
-            .sideInfo {
-                font-size: 20px;
-                font-weight: bold;
             }
             .articleBody {
                 text-align: center;
@@ -119,6 +156,9 @@
                         src="{{context.weather_image_URL}}"
                     />
                     <div>
+                        <h1 class="locationText">
+                            {{ context.city }}, {{ context.state }}
+                        </h1>
                         <h1 class="tempText">{{ context.temp }}°F</h1>
                         <p class="conditionText">
                             {{ context.weather["description"] }}

@@ -1,6 +1,7 @@
 import weather as w
 import news as n
 import quote as q
+import zip_finder as z
 import json
 from flask import Flask, render_template
 
@@ -11,6 +12,7 @@ app = Flask(__name__)
 weather = w.WeatherAPI().get()
 news = n.NewsAPI().get()
 quote = q.QuoteAPI().get()
+zipcode = z.ZipFinderAPI().get()
 
 
 def cli_main():
@@ -30,6 +32,8 @@ def web_main():
             'weather_image_URL': weather.get_image_URL(),
             'articles': news.articles,
             'quote': quote,
+            'city': zipcode.city_info['city'],
+            'state': zipcode.city_info['state']
         })
 
 
