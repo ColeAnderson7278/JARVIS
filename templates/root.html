@@ -7,9 +7,9 @@
         <meta name="viewport" context="width=device-width, initial-scale=1" />
         <style>
             body {
-                background-color: rgb(140, 203, 255);
+                background-color: rgb(155, 25, 122);
             }
-            @media screen and (min-width: 800px) {
+            @media screen and (min-width: 775px) {
                 #searchBar {
                     width: 55rem;
                 }
@@ -40,43 +40,60 @@
                     left: 25px;
                     bottom: 70px;
                 }
+                .totalInfo {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .mainInfo {
+                    display: flex;
+                }
                 .sideInfo {
                     font-size: 32px;
                     font-weight: bold;
                     position: relative;
                     top: 15px;
                 }
+                .cardBody {
+                    display: flex;
+                    justify-content: space-around;
+                    padding-bottom: 30px;
+                }
             }
-            @media screen and (max-width: 800px) {
+            @media screen and (max-width: 775px) {
                 #searchBar {
                     width: 37rem;
                 }
                 .weatherImage {
                     height: 8rem;
-                    position: relative;
-                    top: 15px;
                 }
                 .locationText {
                     font-size: 30px;
-                    position: relative;
-                    left: 15px;
                 }
                 .tempText {
-                    font-size: 50px;
+                    font-size: 70px;
                     position: relative;
-                    left: 15px;
                     bottom: 35px;
                 }
                 .conditionText {
                     font-size: 24px;
                     font-weight: bold;
                     position: relative;
-                    left: 15px;
-                    bottom: 70px;
+                    bottom: 65px;
+                }
+                .totalInfo {
+                    display: flex;
+                    justify-content: center;
                 }
                 .sideInfo {
+                    display: flex;
+                    justify-content: center;
                     font-size: 21px;
                     font-weight: bold;
+                    position: relative;
+                    bottom: 35px;
+                }
+                .cardBody {
+                    text-align: center;
                 }
             }
             .searchCard {
@@ -119,17 +136,17 @@
                 font-size: 50px;
                 font-weight: bold;
                 color: white;
-                background-color: rgb(86, 96, 245);
+                background-color: rgba(255, 255, 255, 0);
                 padding: 10px;
                 margin-bottom: 10px;
                 border-radius: 10px;
                 text-shadow: 2px 2px rgb(0, 0, 0);
             }
             .statementText {
-                font-size: 20px;
+                font-size: 25px;
             }
             .authorText {
-                font-size: 20px;
+                font-size: 25px;
             }
             .weatherCard {
                 border-radius: 10px;
@@ -143,19 +160,10 @@
                     sans-serif;
                 margin-bottom: 10px;
             }
-            .cardBody {
-                display: flex;
-                justify-content: space-around;
-                padding-bottom: 30px;
-            }
             .cardHeader {
                 display: flex;
                 justify-content: center;
                 font-size: 20px;
-            }
-            .mainInfo {
-                display: flex;
-                justify-content: space-between;
             }
             .articleContainer {
                 grid-template-columns: 1fr 1fr;
@@ -178,7 +186,7 @@
                 padding-bottom: 15px;
             }
             .articleImage {
-                height: 18rem;
+                height: 15rem;
                 border-radius: 10px;
             }
             .articleLink {
@@ -190,14 +198,13 @@
     </head>
     <body>
         <div class="searchCard">
-            <form action="https://www.google.com/search">
+            <form action="https://www.google.com/search" target="_blank">
                 <div class="searchContainer input-group">
                     <input
                         id="searchBar"
                         type="text"
                         class="form-control"
                         name="q"
-                        target="_blank"
                         placeholder="Ask Jarvis"
                     />
                     <div class="btn-group">
@@ -220,19 +227,21 @@
         <div class="weatherCard">
             <div class="cardHeader"><h1>Today's Weather</h1></div>
             <div class="cardBody">
-                <div class="mainInfo">
-                    <img
-                        class="weatherImage"
-                        src="{{context.weather_image_URL}}"
-                    />
-                    <div>
-                        <h1 class="locationText">
-                            {{ context.city }}, {{ context.state }}
-                        </h1>
-                        <h1 class="tempText">{{ context.temp }}°F</h1>
-                        <p class="conditionText">
-                            {{ context.weather["description"] }}
-                        </p>
+                <div class="totalInfo">
+                    <div class="mainInfo">
+                        <img
+                            class="weatherImage"
+                            src="{{context.weather_image_URL}}"
+                        />
+                        <div class="mainContent">
+                            <h1 class="locationText">
+                                {{ context.city }}, {{ context.state }}
+                            </h1>
+                            <h1 class="tempText">{{ context.temp }}°F</h1>
+                            <p class="conditionText">
+                                {{ context.weather["description"] }}
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="sideInfo">
