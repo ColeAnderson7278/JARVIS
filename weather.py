@@ -6,7 +6,7 @@ secrets = json.load(open("secrets.json"))
 
 
 class WeatherAPI:
-    DEFAULT_ZIP = secrets['WeatherInfo']['ZIP_Code']
+    DEFAULT_ZIP = secrets['UserInfo']['ZIP_Code']
     URL_FORMAT = "http://api.openweathermap.org/data/2.5/weather?zip={zipcode},us&APPID=" + secrets[
         'WeatherInfo']['WeatherAPI_Key']
 

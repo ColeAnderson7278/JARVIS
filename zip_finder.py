@@ -5,7 +5,7 @@ secrets = json.load(open("secrets.json"))
 
 
 class ZipFinderAPI:
-    DEFAULT_ZIPCODE = secrets['WeatherInfo']['ZIP_Code']
+    DEFAULT_ZIPCODE = secrets['UserInfo']['ZIP_Code']
     URL_FORMAT = "https://www.zipcodeapi.com/rest/" + secrets[
         'ZIP_CodeFinder']['ZipAPI_Key'] + "/info.json/{zipcode}/degrees"
 
