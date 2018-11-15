@@ -2,6 +2,7 @@ import weather as w
 import news as n
 import quote as q
 import zip_finder as z
+import reminders
 import json
 from flask import Flask, render_template
 
@@ -13,6 +14,7 @@ weather = w.WeatherAPI().get()
 news = n.NewsAPI().get()
 quote = q.QuoteAPI().get()
 zipcode = z.ZipFinderAPI().get()
+messages = reminders.check_dates(secrets['UserInfo']['reminders'])
 
 
 def cli_main():
@@ -33,7 +35,8 @@ def web_main():
             'articles': news.articles,
             'quote': quote,
             'city': zipcode.city_info['city'],
-            'state': zipcode.city_info['state']
+            'state': zipcode.city_info['state'],
+            'messages': messages,
         })
 
 

@@ -3,7 +3,6 @@ import json
 
 secrets = json.load(open("secrets.json"))
 
-
 class NewsAPI:
     DEFAULT_COUNTRY = secrets['UserInfo']['country']
     URL_FORMAT = "https://newsapi.org/v2/top-headlines?pageSize=4&country={country}&apiKey=" + secrets[
