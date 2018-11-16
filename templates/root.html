@@ -462,6 +462,9 @@
                 let BtnContainer = document.querySelector(".buttonContainer");
                 BtnContainer.innerHTML =
                     "<div class='gifContainer'><img class='gifImage' src='https://media0.giphy.com/media/U9B60NvW0HHry/giphy.gif?cid=3640f6095beedaa16d78446332440550'/><button class='closeGifBtn'>Stop the Elves</button></div>";
+                setTimeout(function() {
+                    window.scrollTo(0, document.body.scrollHeight);
+                }, 100);
             }
 
             function listenForStart() {
