@@ -3,12 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" context="IE=edge" />
-        <title>Jarvis</title>
+        <title>JARVIS</title>
         <meta name="viewport" context="width=device-width, initial-scale=1" />
         <style>
             body {
                 background-color: rgb(180, 28, 142);
                 margin: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
             }
             @media screen and (min-width: 950px) {
                 .toDoHeader {
@@ -136,7 +138,7 @@
                     border-radius: 10px;
                 }
                 .gifImage {
-                    width: 300px;
+                    width: 275px;
                     border-radius: 5px;
                 }
             }
@@ -183,7 +185,7 @@
                     sans-serif;
                 font-weight: bold;
                 color: white;
-                background-color: rgb(235, 108, 4);
+                background-color: rgb(255, 124, 17);
                 padding: 10px;
                 margin-bottom: 10px;
                 border-radius: 10px;
@@ -444,6 +446,22 @@
             </div>
         </div>
         <script>
+            function clearSearchBar() {
+                var searchBar = document.querySelector("#searchBar");
+                searchBar.value = "";
+            }
+            function listenForSearch() {
+                var searchButton = document.querySelector(".searchButton");
+                searchButton.addEventListener("click", function() {
+                    setTimeout(clearSearchBar, 200);
+                });
+            }
+
+            listenForSearch();
+
+            function scrollToBottom() {
+                window.scrollTo(0, document.body.scrollHeight);
+            }
             function listenForStop() {
                 let stopButton = document.querySelector(".closeGifBtn");
                 stopButton.addEventListener("click", function() {
@@ -462,9 +480,7 @@
                 let BtnContainer = document.querySelector(".buttonContainer");
                 BtnContainer.innerHTML =
                     "<div class='gifContainer'><img class='gifImage' src='https://media0.giphy.com/media/U9B60NvW0HHry/giphy.gif?cid=3640f6095beedaa16d78446332440550'/><button class='closeGifBtn'>Stop the Elves</button></div>";
-                setTimeout(function() {
-                    window.scrollTo(0, document.body.scrollHeight);
-                }, 100);
+                setTimeout(scrollToBottom, 150);
             }
 
             function listenForStart() {
