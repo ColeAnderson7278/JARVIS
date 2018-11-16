@@ -2,7 +2,7 @@ import weather as w
 import news as n
 import quote as q
 import zip_finder as z
-import reminders
+import datetime
 import json
 from flask import Flask, render_template
 
@@ -10,11 +10,24 @@ secrets = json.load(open("secrets.json"))
 
 app = Flask(__name__)
 
+
+def check_dates(reminder_list):
+    today = datetime.date.today()
+    messages = []
+    for reminder in reminder_list:
+        if reminder['date'] == str(today):
+            messages.append(reminder['message'])
+    if messages == []:
+        return ["Nothing on your to-do list"]
+    else:
+        return messages
+
+
 weather = w.WeatherAPI().get()
 news = n.NewsAPI().get()
 quote = q.QuoteAPI().get()
 zipcode = z.ZipFinderAPI().get()
-messages = reminders.check_dates(secrets['UserInfo']['reminders'])
+messages = check_dates(secrets['UserInfo']['reminders'])
 
 
 def cli_main():

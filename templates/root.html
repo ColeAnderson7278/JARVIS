@@ -7,7 +7,7 @@
         <meta name="viewport" context="width=device-width, initial-scale=1" />
         <style>
             body {
-                background-color: rgb(155, 25, 122);
+                background-color: rgb(180, 28, 142);
                 margin: 5px;
             }
             @media screen and (min-width: 950px) {
@@ -77,6 +77,10 @@
                     height: 15rem;
                     border-radius: 10px;
                 }
+                .gifImage {
+                    width: 600px;
+                    border-radius: 5px;
+                }
             }
             @media screen and (max-width: 950px) {
                 .toDoHeader {
@@ -131,6 +135,10 @@
                     width: 16.5rem;
                     border-radius: 10px;
                 }
+                .gifImage {
+                    width: 300px;
+                    border-radius: 5px;
+                }
             }
             .searchCard {
                 display: flex;
@@ -175,7 +183,7 @@
                     sans-serif;
                 font-weight: bold;
                 color: white;
-                background-color: rgb(235, 154, 4);
+                background-color: rgb(235, 108, 4);
                 padding: 10px;
                 margin-bottom: 10px;
                 border-radius: 10px;
@@ -243,6 +251,52 @@
                 text-decoration: none;
                 color: white;
                 font-weight: bold;
+            }
+            .buttonCard {
+                border-radius: 10px;
+                border-style: solid;
+                border-color: white;
+                background-color: green;
+                text-shadow: 3px 3px rgb(0, 0, 0);
+                color: white;
+                font-family: "Lucida Sans", "Lucida Sans Regular",
+                    "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+                    sans-serif;
+                margin-bottom: 10px;
+            }
+            .buttonContainer {
+                display: flex;
+                justify-content: center;
+                margin: 20px;
+            }
+            .gifButton {
+                border-style: none;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                background-color: green;
+                border-radius: 5px;
+                padding: 5px;
+            }
+            .gifButton:hover {
+                background-color: rgb(48, 83, 8);
+            }
+            .gifContainer {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+            .closeGifBtn {
+                border-style: none;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                background-color: green;
+                border-radius: 5px;
+                padding: 5px;
+                margin-top: 20px;
+            }
+            .closeGifBtn:hover {
+                background-color: rgb(48, 83, 8);
             }
         </style>
     </head>
@@ -384,5 +438,41 @@
                 </div>
             </div>
         </div>
+        <div class="buttonCard">
+            <div class="buttonContainer">
+                <button class="gifButton">Click for Dancing Elves</button>
+            </div>
+        </div>
+        <script>
+            function listenForStop() {
+                let stopButton = document.querySelector(".closeGifBtn");
+                stopButton.addEventListener("click", function() {
+                    stopDancing();
+                    listenForStart();
+                });
+            }
+
+            function stopDancing() {
+                let BtnContainer = document.querySelector(".buttonContainer");
+                BtnContainer.innerHTML =
+                    "<button class='gifButton'>Click for Dancing Elves</button>";
+            }
+
+            function showGif() {
+                let BtnContainer = document.querySelector(".buttonContainer");
+                BtnContainer.innerHTML =
+                    "<div class='gifContainer'><img class='gifImage' src='https://media0.giphy.com/media/U9B60NvW0HHry/giphy.gif?cid=3640f6095beedaa16d78446332440550'/><button class='closeGifBtn'>Stop the Elves</button></div>";
+            }
+
+            function listenForStart() {
+                let gifBtn = document.querySelector(".gifButton");
+                gifBtn.addEventListener("click", function() {
+                    showGif();
+                    listenForStop();
+                });
+            }
+
+            listenForStart();
+        </script>
     </body>
 </html>
